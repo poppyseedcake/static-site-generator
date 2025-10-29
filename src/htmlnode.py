@@ -7,3 +7,10 @@ class HTMLNode:
 
     def to_html(self):
         raise NotImplementedError
+
+    def props_to_html(sefl):
+        str = ""
+        for k, v in self.props:
+            str += f" {k} {v}"
+
+        return str

@@ -22,7 +22,7 @@ class TestTextNode(unittest.TestCase):
     def test_not_eq3(self):
         node = TextNode("test node", TextType.LINK)
         node2 = TextNode("test node", TextType.BOLD)
-        self.assertNotEqual(node, node2)
+        self.assertNotEqual(node, node3)
 
 if __name__ == "__main__":
     unittest.main()
