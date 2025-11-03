@@ -7,6 +7,7 @@ from inline_markdown import (
     split_nodes_link,
     text_to_textnodes,
 )
+from markdown_blocks import markdown_to_blocks
 
 from textnode import TextNode, TextType
 import textnode
