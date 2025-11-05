@@ -20,8 +20,8 @@ class BlockType(Enum):
     HEADING = "heading"
     CODE = "code"
     QUOTE = "quote"
-    UNORDERED_LIST = "unordered_list"
-    ORDERED_LIST = "ordered_list"
+    ULIST = "unordered_list"
+    OLIST = "ordered_list"
 
 def block_to_block_type(block):
     lines = block.split("\n")
@@ -48,3 +48,18 @@ def block_to_block_type(block):
             i += 1
         return BlockType.OLIST
     return BlockType.PARAGRAPH
+
+def markdown_to_html_node(markdown):
+    blocks = markdown_to_blocks(markdown)
+    for block in blocks:
+        block_type = block_to_block_type(block)
+        
+
+        #Based on the type of block, create a new HTMLNode with the proper data
+        
+        #Assign the proper child HTMLNode objects to the block node. I created a shared text_to_children(text) 
+        # function that works for all block types. It takes a string of text and returns a list of HTMLNodes 
+        # that represent the inline markdown using previously created functions (think TextNode -> HTMLNode).
+
+        #The "code" block is a bit of a special case: it should not do any inline markdown parsing of its children. 
+        # I didn't use my text_to_children function for this block type, I manually made a TextNode and used text_node_to_html_node.
