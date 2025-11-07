@@ -55,17 +55,6 @@ def block_to_block_type(block):
 
 def markdown_to_html_node(markdown):
     blocks = markdown_to_blocks(markdown)
-    for block in blocks:
-        block_type = block_to_block_type(block)
-        html_node = block_to_html(block, block_type)
-
-        if block_type == BlockType.CODE:
-            text_node_code = TextNode(block, TextType.CODE)
-            text_node_to_html_node(text_node_code)
-        
-
-def markdown_to_html_node(markdown):
-    blocks = markdown_to_blocks(markdown)
     children = []
     for block in blocks:
         html_node = block_to_html_node(block)
