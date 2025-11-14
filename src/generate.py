@@ -10,4 +10,4 @@ def generate_page(from_path, template_path, dest_path):
 
     try:
         markdown = open(from_path, "r")
-        #
+        ##
