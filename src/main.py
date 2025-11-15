@@ -6,7 +6,7 @@ from generate import generate_page, generate_pages_recursive
 
 
 dir_path_static = "./static"
-dir_path_public = "./public"
+dir_path_public = "./docs"
 dir_path_content = "./content"
 if len(sys.argv) > 1:
     basepath = sys.argv[1]

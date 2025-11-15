@@ -37,12 +37,21 @@ def generate_page(from_path, template_path, dest_path, basepath):
 
     with open(dest_path, "w") as f:
         f.write(template)    
-    
 def generate_pages_recursive(dir_path_content, template_path, dest_dir_path, basepath):
-    content_path = Path(dir_path_content)
-    content_files = content_path.rglob("*.md")
-
-    for file in content_files:
-        file_dest = str(file).replace("content/", "public/", 1)
-        file_dest = file_dest.replace(".md", ".html", 1)
-        generate_page(str(file), template_path, file_dest, basepath)
+    for filename in os.listdir(dir_path_content):
+        from_path = os.path.join(dir_path_content, filename)
+        dest_path = os.path.join(dest_dir_path, filename)
+        if os.path.isfile(from_path):
+            dest_path = Path(dest_path).with_suffix(".html")
+            generate_page(from_path, template_path, dest_path, basepath)
+        else:
+            generate_pages_recursive(from_path, template_path, dest_path, basepath)
+    
+#def generate_pages_recursive(dir_path_content, template_path, dest_dir_path, basepath):
+#    content_path = Path(dir_path_content)
+#    content_files = content_path.rglob("*.md")
+#
+#    for file in content_files:
+#        file_dest = str(file).replace("content/", "public/", 1)
+#        file_dest = file_dest.replace(".md", ".html", 1)
+#        generate_page(str(file), template_path, file_dest, basepath)
