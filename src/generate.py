@@ -29,7 +29,10 @@ def generate_page(from_path, template_path, dest_path):
     temp_splited = template.split("{{ Content }}")
     template = html.join(temp_splited)
     
-    os.makedirs(os.path.dirname(dest_path), exist_ok=True)
+    dest_dir_path = os.path.dirname(dest_path)
+    if dest_dir_path != "":
+        os.makedirs(dest_dir_path, exist_ok=True)
+
     with open(dest_path, "w") as f:
         f.write(template)    
     
