@@ -8,7 +8,7 @@ from generate import generate_page, generate_pages_recursive
 dir_path_static = "./static"
 dir_path_public = "./public"
 dir_path_content = "./content"
-if sys.argv > 1:
+if len(sys.argv) > 1:
     basepath = sys.argv[1]
 else:
     basepath = "/" 
@@ -24,7 +24,7 @@ def main():
     copy_files_recursive(dir_path_static, dir_path_public)
     
     print("Generating html...")
-    generate_pages_recursive(dir_path_content, "template.html", dir_path_public)
+    generate_pages_recursive(dir_path_content, "template.html", dir_path_public, basepath)
     #generate_page("content/index.md", "template.html", "public/index.html")
 
 #    copy_static_to_public()    
